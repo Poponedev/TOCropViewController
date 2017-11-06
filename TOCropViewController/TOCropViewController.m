@@ -107,7 +107,17 @@ CGFloat titleLabelHeight;
     [self.cropView performInitialSetup];
 
     __weak typeof(self) weakSelf = self;
-    self.toolbar.doneButtonTapped   = ^{ [weakSelf doneButtonTapped]; };
+    self.toolbar.doneButtonTapped   = ^{
+        if (weakSelf.externalCallToCommitCropImage) {
+            weakSelf.externalCallToCommitCropImage(^(BOOL allowToCommit) {
+                if (allowToCommit) {
+                    [weakSelf doneButtonTapped];
+                }
+            });
+        } else {
+            [weakSelf doneButtonTapped];
+        }
+    };
     self.toolbar.cancelButtonTapped = ^{ [weakSelf cancelButtonTapped]; };
     
     self.toolbar.resetButtonTapped = ^{ [weakSelf resetCropViewLayout]; };

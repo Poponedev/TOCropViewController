@@ -42,6 +42,8 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerToolbarPosition) {
     TOCropViewControllerToolbarPositionBottom
 };
 
+typedef void(^onShouldCommitCallback)(BOOL);
+
 @class TOCropViewController;
 
 
@@ -242,6 +244,12 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerToolbarPosition) {
  set activities that won't appear in the share sheet here.
  */
 @property (nullable, nonatomic, strong) NSArray *excludedActivityTypes;
+
+/**
+ Add external callback which is worked when the commit button is tapped.
+ It gives you a chance to do any (a)sync task before actually committing to crop. (e.g. pop up dialog box)
+ */
+@property (nullable, nonatomic, copy) void (^externalCallToCommitCropImage)(onShouldCommitCallback _Nullable callback);
 
 /**
  When the user hits cancel, or completes a

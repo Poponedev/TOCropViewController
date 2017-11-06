@@ -63,6 +63,23 @@
     //cropController.doneButtonTitle = @"Title";
     //cropController.cancelButtonTitle = @"Title";
     
+//    __weak typeof(TOCropViewController *) weakCropController = cropController;
+//    cropController.externalCallToCommitCropImage = ^(onShouldCommitCallback  _Nullable callback) {
+//        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Confirm to commit"
+//                                                                    message:@"Is it okay to crop?"
+//                                                             preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Yes, it is" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            callback(YES);
+//        }];
+//        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"No, try again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            callback(NO);
+//        }];
+//
+//        [ac addAction:action1];
+//        [ac addAction:action2];
+//        [weakCropController presentViewController:ac animated:YES completion:nil];
+//    };
+    
     self.image = image;
     
     //If profile picture, push onto the same navigation stack
